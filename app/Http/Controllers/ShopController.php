@@ -21,7 +21,7 @@ class ShopController extends Controller
     public function index()
     {
 		$setting=Setting::where('id','1')->get()->first();
-        $data = Good::all();
+        $data=Good::all();
 		$category = Category::all();
 		$id=1;
 		$good = Good::where('id','1')->get()->first();
@@ -616,10 +616,7 @@ elseif(empty($file)&&!empty($file1)&&empty($file2)&&!empty($file3)){
 			'details2'=>$request->details2,
 			'details3'=>$request->details3,
 			'save_stock'=>$request->save_stock,
- 'photo1' => $filePath,
-			'photo2' => $filePath1,
-			'photo3' => $filePath2,
-			'photo4' => $filePath3,
+			
         ]);
 		}
       /*  $good->update([

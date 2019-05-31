@@ -38,17 +38,16 @@
         </div>
     </div>
 	<div class="clearfix mr-50 mt-50 mb-50">
-	</div>
 	<div class="container coverflow">
 	<div id="myCarousel" class="carousel slide">
-	<!-- 轮播（Carousel）指标 -->
+
 	<ol class="carousel-indicators">
 		<li data-target="#myCarousel" data-slide-to="0" 
 			class="active"></li>
 		<li data-target="#myCarousel" data-slide-to="1"></li>
 		<li data-target="#myCarousel" data-slide-to="2"></li>
 	</ol>   
-	<!-- 轮播（Carousel）项目 -->
+	
 	<div class="carousel-inner">
 		<div class="item active">
 			<img src={{$setting->photo1}} height="200"  alt="First slide">
@@ -60,7 +59,7 @@
 			<img src={{$setting->photo3}} height="200" alt="Third slide">
 		</div>
 	</div>
-	<!-- 轮播（Carousel）导航 -->
+	
 	<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
 	    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 	    <span class="sr-only">Previous</span>
@@ -71,6 +70,11 @@
 	</a>
 </div> 
 </div>
+	
+	    
+	</div>
+
+	
     <!-- ##### Breadcumb Area End ##### -->
 
     <!-- ##### Shop Grid Area Start ##### -->
@@ -120,6 +124,28 @@
                             </div>
 							-->
                         </div>
+					<!--	<<div class="container theme-showcase" role="main">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="item"><img data-src="holder.js/1000*300/auto/#777:#555/text:First slide" alt="One" src={{$setting->photo1}} data-holder-rendered="true" ></div>
+                <div class="item active"><img data-src="holder.js/1000*300/auto/#666:#444/text:Second slide" alt="Two" src={{$setting->photo2}} data-holder-rendered="true" ></div>
+                <div class="item"><img data-src="holder.js/1000*300/auto/#555:#333/text:Third slide" alt="Three" src={{$setting->photo3}} data-holder-rendered="true" ></div>
+            </div>
+            <a class="left carousel-control" href="https://kkbruce.tw/bs3/Examples/theme#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> 
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="https://kkbruce.tw/bs3/Examples/theme#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div> -->
                     </div>
                 </div>
 

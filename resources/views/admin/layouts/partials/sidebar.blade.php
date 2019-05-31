@@ -32,7 +32,7 @@
                        onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                         <i class="fa fa-fw fa-gear"></i>
-                        Logout
+                       登出
                     </a>
 
                     <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
