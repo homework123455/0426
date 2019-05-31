@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>勤益體育館場地系統</title>
+    <title>勤益體育用品購物系統</title>
 
     <!-- Styles -->
     <link href="/css/app1.css" rel="stylesheet">
@@ -35,7 +35,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    體育用品購物系統
+                    勤益體育用品購物系統
                 </a>
             </div>
 
