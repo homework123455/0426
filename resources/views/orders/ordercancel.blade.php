@@ -49,6 +49,23 @@
 
 			{{$ordertotal}}
         </div>
+		@if($order->car_money==0)
+		<div class="form-group">
+            <label width="80">運費：</label>
+			0
+        </div>
+		@elseif($order->car_money==1)
+		<div class="form-group">
+            <label width="80">運費：</label>
+			{{$price}}
+        </div>
+		@endif
+		@if($order->vip_check==1)
+		<div class="form-group">
+            <label width="80">折扣後金額：</label>
+			{{$vip_total}}
+        </div>
+		@endif
 		
 		
         <ol class="breadcrumb">
@@ -122,7 +139,9 @@
 
         <div class="text-right">
        <button type="submit" class="btn btn-success">送出</button>
+	   <a class="btn btn-success" href="{{ route('admin.dashboard.index') }}"  role="button">返回</a>
         </div>
+		
         </form>
         <p>&nbsp;</p>
         <p>&nbsp;</p>

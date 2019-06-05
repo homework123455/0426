@@ -316,27 +316,34 @@ class MaintaincesController extends Controller
 			$vip_total=$ordertotal*$vip_discount/10;
 		}
 
-        $data=['orders'=>$orders,'users'=>$users,'order'=>$order,'ordersdetail'=>$ordersdetail,'ordertotal'=>$ordertotal,'vip_total'=>$vip_total,'price'=>$price];
+        $data=['orders'=>$orders,'users'=>$users,'order'=>$order,'ordersdetail'=>$ordersdetail,'ordertotal'=>$ordertotal,'vip_total'=>ceil($vip_total),'price'=>$price];
         return view('orders.show1', $data);
     }
 	public function show2($id){
-        
+         $vip_discount=Setting::where('id','1')->value('vip_discount');
+		$price=Setting::where('id','1')->value('prices');	
         $users=User::orderBy('created_at','DESC')->get();
 		$order=Order::find($id);
 		$orders = Order::where('users_id',$order->users_id)->get();
         $ordersdetail = OrdersDetail::where('orders_id',$id)->get();
 		$ordertotal=0;
+		$vip_total=0;
 		foreach($ordersdetail as $order1){
 		$ordertotal = $ordertotal+$order1->total;
 		}   
+		if($order->vip_check==1)
+		{
+			$vip_total=$ordertotal*$vip_discount/10;
+		}
 
-        $data=['orders'=>$orders,'users'=>$users,'order'=>$order,'ordersdetail'=>$ordersdetail,'ordertotal'=>$ordertotal];
+        $data=['orders'=>$orders,'users'=>$users,'order'=>$order,'ordersdetail'=>$ordersdetail,'ordertotal'=>$ordertotal,'vip_total'=>ceil($vip_total),'price'=>$price];
         return view('orders.ordercancel', $data);
     }
 	public function cancelshow($id){
         
 
-        
+        $F_times=0;
+		$C_times=0;
         $users=User::orderBy('created_at','DESC')->get();
 		$order=Order::find($id);
 		$orders = Order::where('users_id',$order->users_id)->get();
@@ -344,8 +351,10 @@ class MaintaincesController extends Controller
 		$orders_C =$orders->whereIn('status',["已取消","退貨"]);
 		$C=count($orders_C);
 		$F=count($ordersing)-$C;
+		if(count($ordersing)>0){
 		$C_times=ceil((count($orders_C)/count($ordersing))*100);
 		$F_times=100-ceil($C_times);
+		}
 		$i=count($ordersing);
         $ordersdetail = OrdersDetail::where('orders_id',$id)->get();
 		$ordertotal=0;

@@ -19,6 +19,7 @@
         </h1>
     </div>
 </div>
+@if(Auth::user()->previlege_id==3)
 <!-- /.row -->
 <div class="input-group custom-search-form">
 <form action="{{ route('admin.users.search') }}" method="POST">
@@ -29,6 +30,7 @@
     </span>
 </form>
 </div>
+@endif
 @if(Auth::user()->previlege_id==3)
 <div class="row" style="margin-bottom: 20px; text-align: right" >
 
@@ -140,7 +142,7 @@
 				 <tbody>
 		
                 @foreach($users as $user)
-						@if($user->name == Auth::user()->name)
+						@if($user->email == Auth::user()->email)
                     <tr>
                       <td style="text-align: center"><a href="{{ route('admin.users.data', $user->id) }}">{{ $user->email }}</a></td>
 					@if($user->vip==0)
@@ -155,8 +157,8 @@
                                 @endif
                                 @endforeach
                         </td>
-                        <td style="text-align: center">{{ $user->position}}</td>
-                        <td style="text-align: center">{{ $user->extension }}</td>
+                        <td style="text-align: center">{{ $user->phone}}</td>
+                       
                         <td style="text-align: center">
                             @foreach($previleges as $previlege)
                             @if($user->previlege_id==$previlege->id)

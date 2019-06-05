@@ -26,7 +26,7 @@
 <div class="row">
     <div class="col-lg-12">
 			<div class="form-group">
-                <label width="80">請輸入原始密碼：</label>
+                <label width="80">姓名：</label>
                 <input name="name" class="form-control" value="{{$user->name}}" readonly >
             </div>
 	

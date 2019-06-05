@@ -103,7 +103,7 @@ return [
     ],
     'email' => [
         'required' => '信箱不能為空',
-        'email' => '格式不正確',
+        'email' => '信箱格式不正確',
         'unique' => '重覆的mail',
     ],
 	 'password' => [

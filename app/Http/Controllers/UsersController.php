@@ -215,8 +215,9 @@ class UsersController extends Controller
 	   $newpassword=$request->newpassword;
 	   $newpasswordcheck=$request->newpasswordcheck;
         $data = ['user'=>$user,];
+		if($newpassword!=null&&$newpasswordcheck!=null&&$oldpassword!=null){
 			if(Hash::check($oldpassword,$user->password))
-		{
+			{
 			if($newpassword==$newpasswordcheck)
 			{
 			$user->update(['password'=>bcrypt($newpassword)]);
@@ -229,6 +230,10 @@ class UsersController extends Controller
 		else{
 			return redirect()->route('admin.users.editpassword',$id)->with('alert', '原始密碼錯誤');
 			}
+		}
+		else{
+			return redirect()->route('admin.users.editpassword',$id)->with('alert', '欄位不可為空');
+		}
 
     }
   public function checkmail()

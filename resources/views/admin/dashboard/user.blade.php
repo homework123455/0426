@@ -229,7 +229,7 @@ setTimeout('ShowTime()',1000);
                     </thead>
 					
                     @foreach($order_users as $order_user)
-						@if($order_user->status=='處理中'||$order_user->status=='已出貨')
+						@if($order_user->status=='處理中'||$order_user->status=='已出貨'||$order_user->status=='取消審核中')
 					
 					
                         
@@ -359,7 +359,7 @@ setTimeout('ShowTime()',1000);
                                                                            
                                                                                 </div>
                                                                             </div>
-										 @elseif($order_user->status=='已處理'||$order_user->status=='已取消')
+										 @elseif($order_user->status=='已處理'||$order_user->status=='已取消'||$order_user->status=='駁回')
                                                                
                                                                            
                                          <div> <a href="{{ route('orders.show1', $order_user->id) }}" class="btn btn-danger" role="button">查看</a></div>
