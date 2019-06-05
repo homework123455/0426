@@ -229,7 +229,7 @@ setTimeout('ShowTime()',1000);
                     </thead>
 					
                     @foreach($order_users as $order_user)
-						@if($order_user->status=='處理中'||$order_user->status=='已出貨'||$order_user->status=='取消審核中')
+						@if($order_user->status=='處理中'||$order_user->status=='已出貨'||$order_user->status=='取消審核中'||$order_user->status=='已處理')
 					
 					
                         
