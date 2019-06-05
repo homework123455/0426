@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Http\Requests\PlaceRequest;
+use App\Http\Requests\SupplyRequest;
 use App\Good;
 use App\Report;
 use App\Plant;
@@ -182,10 +183,11 @@ class ShopController extends Controller
 		
 		return view('admin.shops.suppliers', $data);
 	}
-	   public function supplierstore(Request $request,$id)
+	   public function supplierstore(SupplyRequest $request,$id)
     {
         
         $good = Good::find($id);
+		//if(!empty($request->value)&&!empty($request->price)){
         Suppliersdetail::create([
             'name' => $request->name,
 			'supplier_id'=>$request->supplier_id,
@@ -208,7 +210,7 @@ class ShopController extends Controller
            
 
         ]);
-
+		//}
 
         return redirect()->route('admin.suppliers.index');
     }
