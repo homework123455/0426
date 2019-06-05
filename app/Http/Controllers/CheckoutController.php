@@ -176,16 +176,10 @@ class CheckoutController extends Controller
 			
         ]);
 		}
-		else{
-			DB::table('users')
-        ->where('id', Auth::user()->id)
-        ->update([
-            'vip' => 0,
-			'vip_time'=>null
+		
+		
 			
-        ]);
-			
-		}
+		
 			$stock=Good::where('name',$cart->product)->get()->first();
 			//$result = $stock->stock-$cart->qty;
 			/*DB::table('goods')->where('name',$cart->product)->update(
