@@ -119,6 +119,10 @@ return [
         'required' => '請再次確認密碼',
        
     ],
+	'address' => [
+        'required' => '地址不能為空',
+
+    ],
     ],
 
     /*
