@@ -505,7 +505,7 @@ if($request->method=='0'){
 		$users =User::all();
         $vip=User::where('id',$ordersdetail->users_id);
 		$vip_level=User::where('id',$ordersdetail->users_id)->value('level');
-		
+		$vip1=Setting::where('id',1)->value('vip');
 		if($request->method=='0'){
 		$ordersdetail->update([
                 'status'=>'已退貨'
@@ -516,7 +516,15 @@ if($request->method=='0'){
 			$vip->update([
                 'level'=>$vip_level-$ordersdetail->total
             ]);
+			if($vip->level<$vip1){
+		DB::table('users')
+        ->where('id', Auth::user()->id)
+        ->update([
+            'vip' => 0,
+			'vip_time'=>null
 			
+        ]);
+			}
 		}
 		elseif($request->method=='1'){
 			$ordersdetail->update([
