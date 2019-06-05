@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Supplier;
 use App\Good;
 use App\Suppliersdetail;
+use App\Http\Requests;
+use App\Http\Requests\SupplierRequest;
 class SuppilerController extends Controller
 {
    public function index()
@@ -60,7 +62,7 @@ class SuppilerController extends Controller
 		
         return redirect()->route('admin.suppliers.index');
     }
-	public function store(Request $request)
+	public function store(SupplierRequest $request)
     {
 		$supplier = Supplier::orderBy('created_at', 'DESC')->get();
         $Suppliers = Supplier::where('name',$request->name )->get();
@@ -83,7 +85,7 @@ class SuppilerController extends Controller
 		
         //return redirect()->route('admin.categories.index');
     }
-	public function update(Request $request,$id)
+	public function update(SupplierRequest $request,$id)
     {
 		$supplier = Supplier::find($id);
       
