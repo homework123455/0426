@@ -82,7 +82,19 @@
         </div>
 		
 
+        @if($ordersdetail->status=="退貨中")
 
+               <div class="panel panel-danger">
+    <div class="panel-heading">
+        <h3 class="panel-title">退貨原因</h3>
+    </div>
+    <div class="panel-body">
+	{{$ordersdetail->backreason}}
+    </div>
+
+@endif
+
+            </div>
         
                                     
                                 

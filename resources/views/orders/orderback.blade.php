@@ -103,14 +103,7 @@
                                     
                                 
        
-        @if($order->status=="駁回")
 
-                <label>駁回原因：</label>
-               <label>{{$order->reason}}</label>
-
-@endif
-
-            </div>
 			
 		</div>
 		<div class="form-group">
