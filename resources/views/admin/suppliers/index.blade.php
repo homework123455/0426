@@ -152,7 +152,7 @@
 						<th width="300" style="text-align: center">供應商狀態</th>
 						<th width="300" style="text-align: center">供應商電話</th>
                         <th width="150" style="text-align: center">創建時間</th>
-                                                
+                        <th width="150" style="text-align: center">功能</th>                       
 
                 </thead>
                 <tbody>
@@ -177,6 +177,9 @@
 						</td>
 						 <td style="text-align: center">
 						<div>{{ $supplier->created_at }}</div>
+						</td>
+						 <td style="text-align: center">
+						<div>  <a class="btn btn-primary" role="button" href="{{ route('admin.suppliers.edit', $supplier->id) }}" >修改</a></div>
 						</td>
 						</tr>
 
@@ -252,6 +255,13 @@
 {!! $suppliers->render() !!}
 
 <!-- /.row -->
+<script>
+    var msg = '{{Session::get('alert')}}';
+    var exist = '{{Session::has('alert')}}';
+    if(exist){
+      alert(msg);
+    }
+  </script>	
 <script type="text/javascript">
 var a =<?php echo $a ?>';
 	$(function () { $('#'a).collapse('toggle')});

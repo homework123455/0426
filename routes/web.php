@@ -143,6 +143,8 @@ Route::group(['prefix' => 'admin'], function() {
 	////供應商
 	 Route::get('suppliers', ['as' => 'admin.suppliers.index', 'uses' => 'SuppilerController@index']);
 	 Route::get('suppliers/create', ['as' => 'admin.suppliers.create', 'uses' => 'SuppilerController@create']);
+	 Route::get('suppliers/{id}/edit', ['as' => 'admin.suppliers.edit', 'uses' => 'SuppilerController@edit']);
+	 Route::patch('suppliers/{id}', ['as' => 'admin.suppliers.update', 'uses' => 'SuppilerController@update']);
 	 Route::post('suppliers', ['as' => 'admin.suppliers.store', 'uses' => 'SuppilerController@store']);
 	 Route::delete('suppliers/{id}', ['as' => 'admin.suppliers.destroy', 'uses' => 'SuppilerController@destroy']);
 	 Route::patch('suppliers/{id}/scrapped', ['as' => 'admin.suppliers.scrapped', 'uses' => 'SuppilerController@scrapped']);

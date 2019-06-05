@@ -29,6 +29,14 @@ class SuppilerController extends Controller
 		
 		return view('admin.suppliers.create', $data);
 	}
+	public function edit($id)
+	{
+		$supplier = Supplier::find($id);
+		
+		$data = ['suppliers' => $supplier ];
+		
+		return view('admin.suppliers.edit', $data);
+	}
 	 public function scrapped($id)
     {
 
@@ -64,14 +72,31 @@ class SuppilerController extends Controller
 			'address'=>$request->address
             ]);
 			$msg="成功新增供應商:".$request->name;
-			return redirect()->route('admin.suppliers.index');
+			return redirect()->route('admin.suppliers.index')->with('alert', "成功新增供應商:".$request->name);
 			}
 			else{
 			$msg="供應商:".$request->name."已存在!";
-			 $data = ['msg'=>$msg,'suppliers' => $category];
+			 $data = ['msg'=>$msg,'suppliers' => $supplier];
 		
           return view('admin.suppliers.create', $data);
 			}
+		
+        //return redirect()->route('admin.categories.index');
+    }
+	public function update(Request $request,$id)
+    {
+		$supplier = Supplier::find($id);
+      
+		
+        $supplier->update([
+            'name' => $request->name,
+			'phone'=> $request->phone,
+			'address'=>$request->address
+            ]);
+			$msg="成功修改供應商:".$request->name;
+			
+			return redirect()->route('admin.suppliers.index')->with('alert', "成功修改供應商:".$request->name);
+			
 		
         //return redirect()->route('admin.categories.index');
     }
