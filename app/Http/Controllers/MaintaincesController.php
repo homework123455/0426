@@ -500,14 +500,23 @@ if($request->method=='0'){
 		$ordersdetail = OrdersDetail::find($id);
         
 		$order=Order::where('id',$ordersdetail->orders_id)->get();
+		$report=Report::where('good_id',$ordersdetail->product_id);
+		$earn=Report::where('good_id',$ordersdetail->product_id)->value('earn');
 		$users =User::all();
-        
+        $vip=User::where('id',$ordersdetail->users_id);
+		$vip_level=User::where('id',$ordersdetail->users_id)->value('level');
 		
 		if($request->method=='0'){
 		$ordersdetail->update([
                 'status'=>'已退貨'
-
             ]);
+			$report->update([
+                'earn'=>$earn-$ordersdetail->total
+            ]);
+			$vip->update([
+                'level'=>$vip_level-$ordersdetail->total
+            ]);
+			
 		}
 		elseif($request->method=='1'){
 			$ordersdetail->update([

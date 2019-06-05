@@ -158,7 +158,7 @@ class CheckoutController extends Controller
 		}
 		}	
            
-			$level = DB::table('users')->where('id', Auth::user()->id)->value('level');
+		$level = DB::table('users')->where('id', Auth::user()->id)->value('level');
 		DB::table('users')
         ->where('id', Auth::user()->id)
         ->update([
@@ -175,6 +175,16 @@ class CheckoutController extends Controller
 			'vip_time'=>Carbon::now()
 			
         ]);
+		}
+		else{
+			DB::table('users')
+        ->where('id', Auth::user()->id)
+        ->update([
+            'vip' => 0,
+			'vip_time'=>null
+			
+        ]);
+			
 		}
 			$stock=Good::where('name',$cart->product)->get()->first();
 			//$result = $stock->stock-$cart->qty;
