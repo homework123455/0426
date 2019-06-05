@@ -15,6 +15,7 @@ use App\Setting;
 use App\User;
 use App\Addstock;
 use App\Suppliersdetail;
+use App\Suppliersdetail1;
 use Carbon\Carbon;
 class ShopController extends Controller
 {
@@ -156,7 +157,7 @@ class ShopController extends Controller
 	}
 	public function suppliersdetail(Request $request)
 	{
-		$suppliersdetails = Suppliersdetail::orderBy('created_at', 'DESC')->paginate(5);
+		$suppliersdetails = Suppliersdetail1::orderBy('created_at', 'DESC')->paginate(5);
 		$suppliers = Supplier::orderBy('created_at', 'DESC')->get();
 		$goods=Good::orderBy('created_at','DESC')->get();
 		$Search = $request->input('good_search');
@@ -186,6 +187,13 @@ class ShopController extends Controller
         
         $good = Good::find($id);
         Suppliersdetail::create([
+            'name' => $request->name,
+			'supplier_id'=>$request->supplier_id,
+            'value' => $request->value,
+            'price' => $request->price,
+          
+        ]);
+		Suppliersdetail1::create([
             'name' => $request->name,
 			'supplier_id'=>$request->supplier_id,
             'value' => $request->value,
